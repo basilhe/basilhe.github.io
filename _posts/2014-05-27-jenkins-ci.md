@@ -68,7 +68,7 @@ or
 
 ## Android Projects
 
-### Use "Android Tool":http://developer.android.com/tools/help/android.html to create Ant build file for command line build
+### Use [Android Tool](http://developer.android.com/tools/help/android.html) to create Ant build file for command line build
 
 <pre>
 $ android update project -p $PATH -n $NAME
@@ -110,23 +110,22 @@ depends="rename-release-with-version-number,android_rules.-set-release-mode"&gt;
 <pre>
 ANDROID_HOME=~/tool/android-sdks
 </pre>
+#### [Enable ProGuard](http://developer.android.com/tools/help/proguard.html#enabling)
 
-### "Enable ProGuard":http://developer.android.com/tools/help/proguard.html#enabling
-
-### Invoke Ant to build target
+#### Invoke Ant to build target
 
 ![android_ant_build.png](/assets/images/jenkins-ci/android_ant_build.png)
 
-## Trigger
+### Trigger
 
-###  Poll SCM with notifyCommit
+####  Poll SCM with notifyCommit
 
 Add Web Hooks to gitlab project with URL: *http://192.168.1.118:8080/gitlab/notify_commit*
 And setup Build Triggers on Jenkins
 
 ![build_triggers.png](/assets/images/jenkins-ci/build_triggers.png)
 
-### Invoke Build Now directly
+#### Invoke Build Now directly
 
 Add Web Hooks to gitlab project with URL: *http://192.168.1.118:8080/gitlab/build_now*
 

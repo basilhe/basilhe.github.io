@@ -132,3 +132,8 @@ JB :
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
   
+  plantuml:
+    plantuml_jar: _bin/plantuml.jar     # path to plantuml jar
+    tmp_folder: _plantuml               # tmp folder to put generated image files
+    #dot_exe: c:/graphviz/bin/dot.exe    # [optional] path to Graphviz dot execution
+    #background_color: white             # [optional] UML image background color

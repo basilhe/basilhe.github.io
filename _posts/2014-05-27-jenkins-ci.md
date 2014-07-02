@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Jenkins CI"
-description: ""
+description: "如何使用 Jenkins CI 进行 iOS 和 Android 持续集成，自动打包？"
 category: devops
 tags: [jenkins,ci]
 ---

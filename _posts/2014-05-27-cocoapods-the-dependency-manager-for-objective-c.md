@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "CocoaPods The Dependency Manager for Objective C"
-description: ""
+description: "CocoaPods - 使用私有 Pods 库，发布流程样例"
 category: ios
 tags: [ios,cocoapods]
 ---
@@ -62,3 +62,14 @@ Examples:
 spec.ios.vendored_frameworks = 'Frameworks/MyFramework.framework'
 spec.vendored_frameworks = 'MyFramework.framework', 'TheirFramework.framework'
 </pre>
+
+h4. Customize PCH header
+
+s.prefix_header_contents = <<-HEADER
+#header content goes here
+HEADER
+
+h4. inhibit warnings
+
+In Podfile, add following:
+inhibit_all_warnings!

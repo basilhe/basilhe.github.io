@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Git 不完全手册"
-description: "手机整理 Git 相关手册和技巧"
+description: "收集整理 Git 相关手册和技巧"
 category: devops 
 tags: [git,scm,manual]
 ---

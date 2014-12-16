@@ -7,7 +7,7 @@ tags: [foosball,gokit]
 ---
 {% include JB/setup %}
 
-[TOC]
+{{toc}}
 
 # 缘起
 
@@ -47,7 +47,7 @@ tags: [foosball,gokit]
 * 使用开发者账号登录机智云开发者网站 http://site.gizwits.com
 * 点击新建设备接入按钮
 * 输入设备名称和其他信息，点击添加按钮并一直选择下一步直到完成
-![image](../assets/images/foosball/new_product.png)
+![image](/assets/images/foosball/new_product.png)
 * 完成后，选择该产品，并在左边菜单项中数据点进入数据点编辑页面，再使用右边的新建数据点按钮按个添加数据点
 * 编辑完成之后，选择左侧菜单项“产品开发资源”，滚动页面到“MCU 开发资源”部分，点击“机智云接入串口通信协议文档”下载 MCU 开发文档，就可以着手开始硬件开发了
 
@@ -60,7 +60,7 @@ tags: [foosball,gokit]
 * ST188 反射式红外光电传感器(与 GoKit 内置红外传感器型号一致)两个，用于进球检测
 * 40P杜邦线若干
 * 面包板和电阻若干
-![image](../assets/images/foosball/hardware.png)
+![image](/assets/images/foosball/hardware.png)
 
 ## 开发资料和环境准备
 
@@ -75,19 +75,19 @@ tags: [foosball,gokit]
 
 根据《GoKit 原理图》，GoKit 板上的 P5 扩展接口是提供给 MCU 的 IO 引脚，包括 PA4-PA7、PB10 和 PB11 共6个引脚，如图所示：
 
-![image](../assets/images/foosball/p5.png)
+![image](/assets/images/foosball/p5.png)
 
 先将4位数码管的 DIO、RCLK、SCLK 分别连接到 PA6、PA7、PA5 口并连接 VCC 和 GND，如下图：
 
-![image](../assets/images/foosball/led.png)
+![image](/assets/images/foosball/led.png)
 
 然后按照如下电脑连接 ST188 在面包板上：
 
-![image](../assets/images/foosball/ir.png) 
+![image](/assets/images/foosball/ir.png) 
 
 并和 GoKit 相连，红蓝红外探测器的 AOUT 分别连接 P5 扩展接口中的 PA4 和 PB10 引脚：
 
-![image](../assets/images/foosball/whole.png) 
+![image](/assets/images/foosball/whole.png) 
 
 最后将 JLink 连接到 GoKit 的 20PIN 插槽上即可。
 
@@ -101,9 +101,9 @@ tags: [foosball,gokit]
 	
 使用 MDK 打开子目录 MDK_Project 下的 Project 项目，配置 "Target 1" 的 Debug 和 Utilities 选项中的设备连接方式为 “J-LINK / J-Trace Cortex”。
 
-![image](../assets/images/foosball/debug.png) 
+![image](/assets/images/foosball/debug.png) 
 
-![image](../assets/images/foosball/options.png) 
+![image](/assets/images/foosball/options.png) 
 
 使用 JLink 连接设备的时候如果提示需要驱动的话可以到 “C:\Keil\ARM\Segger” 目录下寻找对应的 JLink 驱动程序。
 
@@ -111,7 +111,7 @@ tags: [foosball,gokit]
 
 在项目子目录 User\Hal_Driver 中增加 hal_led.h 和 hal_led.c 文件，并增加到项目的 user 分组下面
 
-![image](../assets/images/foosball/hal_led.png) 
+![image](/assets/images/foosball/hal_led.png) 
 
 参照“4位串行595数码管资料”和 GoKit 源码中的 hal_rgb_led 模块，定义 hal_led.h 如下：
 
@@ -340,7 +340,7 @@ byte1 | | 0xFE | 场次字段值为254; 实际值计算公式y=1.000000*x+(0.000
 
 每个产品都有自己的标识，如果你定义了自己的产品，则需要修改产品标识，修改 protocol.h 中宏定义 PRODUCT_KEY 的值为机智云网站“产品信息”页面中的标识码字符串内容即可
 
-	#define		PRODUCT_KEY														"ef992d473159465ba9d70d4d1a14aa39"
+	#define		PRODUCT_KEY				  "ef992d473159465ba9d70d4d1a14aa39"
 	
 #### 定义只读和可写结构体
 
@@ -442,20 +442,21 @@ MCU 通常会在以下情况调用 ReportStatus(tag）上报设备状态：
 * 长按 KEY3，双方交换场地，比分清零重新开下一局
 * 长按 KEY4,  比分清零，重新开局。
 * 当计分板上有分数时
-> * 长按 KEY1 表示取消红方进球
-> * 长按 KEY2 表示取消蓝方进球
+  * 长按 KEY1 表示取消红方进球
+  * 长按 KEY2 表示取消蓝方进球
 * 手机控制
-> * 游戏控制设置为开始，比分清零，重新开局
-> * 设置为取消红方进球，则取消红方进球数一个
-> * 设置为取消蓝方进球，同理取消蓝方进球数一个，如果进球数为零则不做任何改动
-> * 通过修改 game_id 可以修改游戏场次
+  * 游戏控制设置为开始，比分清零，重新开局
+  * 设置为取消红方进球，则取消红方进球数一个
+  * 设置为取消蓝方进球，同理取消蓝方进球数一个，如果进球数为零则不做任何改动
+  * 通过修改 game_id 可以修改游戏场次
 
 ## 联调安装
 
 到机智云网站产品开发资源中即可下载 iOS 或 Android 的 Demo App 进行联调
 
-![image](../assets/images/foosball/demo.png) 
+![image](/assets/images/foosball/demo.png) 
 
 结果示意图
 
-![image](../assets/images/foosball/onboard.png) 
+![image](/assets/images/foosball/onboard.png) 
+

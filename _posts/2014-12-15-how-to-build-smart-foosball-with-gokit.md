@@ -460,3 +460,10 @@ MCU 通常会在以下情况调用 ReportStatus(tag）上报设备状态：
 
 ![image](/assets/images/foosball/onboard.png) 
 
+新传感器连接示意图
+
+![image](/assets/images/foosball/new-sensors.jpg) 
+![image](/assets/images/foosball/overview.jpg) 
+![image](/assets/images/foosball/led-details.jpg) 
+
+

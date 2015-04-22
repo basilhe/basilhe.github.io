@@ -33,6 +33,7 @@ default account: admin/password
 # CDE 绘制统计报表
 
 * [Pentaho CDE 教程（三）走进CDE 之 联动](http://alenzhai.iteye.com/blog/2059879)
+* [Creating Dashboards with CDE](http://type-exit.org/adventures-with-open-source-bi/2011/06/creating-dashboards-with-cde/)
 
 # Mondrian OLAP
 

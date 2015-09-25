@@ -256,7 +256,7 @@ https://moshimon.wordpress.com/2015/01/19/export-data-from-cassandra-to-csv/
 
 ## master,slave,facter三台机器上都做如下操作（启动mongos路由）：
 
-	/data/mongodb/bin/mongos --configdb 10.232.63.71:26000,10.221.216.35:26000,10.232.55.122:26000 --port 25000 --logpath=/data/sharding/mongos/logs/mongos.log --fork
+	/data/mongodb/bin/mongos --configdb 201.132.63.17:26000,201.121.216.53:26000,201.132.55.89:26000 --port 25000 --logpath=/data/sharding/mongos/logs/mongos.log --fork
 
 ## master,slave,facter三台机器上都做如下操作（启动mongod节点）：
 
@@ -274,28 +274,28 @@ https://moshimon.wordpress.com/2015/01/19/export-data-from-cassandra-to-csv/
 
 	./mongo --port 26001
 	use admin
-	config={_id:"shard1",members:[{_id:0,host:"10.232.63.71:26001",arbiterOnly:true},{_id:1,host:"10.221.216.35:26001"},{_id:2,host:"10.232.55.122:26001"}]}
+	config={_id:"shard1",members:[{_id:0,host:"201.132.63.71:26001",arbiterOnly:true},{_id:1,host:"201.121.216.35:26001"},{_id:2,host:"201.132.55.122:26001"}]}
 	rs.initiate(config);
 
 ## 在非[arbiterOnly:true]机器上都做如下操作（配置副本集shard2）：
 
 	./mongo --port 26002
 	use admin
-	config={_id:"shard2",members:[{_id:0,host:"10.232.63.71:26002"},{_id:1,host:"10.221.216.35:26002",arbiterOnly:true},{_id:2,host:"10.232.55.122:26002"}]}
+	config={_id:"shard2",members:[{_id:0,host:"201.132.63.71:26002"},{_id:1,host:"201.121.216.35:26002",arbiterOnly:true},{_id:2,host:"201.132.55.122:26002"}]}
 	rs.initiate(config);
 
 ## 在非[arbiterOnly:true]机器上都做如下操作（配置副本集shard3）：
 	./mongo --port 26003
 	use admin
-	config={_id:"shard3",members:[{_id:0,host:"10.232.63.71:26003"},{_id:1,host:"10.221.216.35:26003"},{_id:2,host:"10.232.55.122:26003",arbiterOnly:true}]}
+	config={_id:"shard3",members:[{_id:0,host:"201.132.63.71:26003"},{_id:1,host:"201.121.216.35:26003"},{_id:2,host:"201.132.55.122:26003",arbiterOnly:true}]}
 	rs.initiate(config);
 
 ## 在任意一台机器上都做如下操作（配置sharding）：
 	./mongo --port 25000
 	use admin
-	db.runCommand({addshard:"shard1/10.232.63.71:26001,10.221.216.35:26001,10.232.55.122:26001"})
-	db.runCommand({addshard:"shard2/10.232.63.71:26002,10.221.216.35:26002,10.232.55.122:26002"})
-	db.runCommand({addshard:"shard3/10.232.63.71:26003,10.221.216.35:26003,10.232.55.122:26003"})
+	db.runCommand({addshard:"shard1/201.132.63.71:26001,201.121.216.35:26001,201.132.55.122:26001"})
+	db.runCommand({addshard:"shard2/201.132.63.71:26002,201.121.216.35:26002,201.132.55.122:26002"})
+	db.runCommand({addshard:"shard3/201.132.63.71:26003,201.121.216.35:26003,201.132.55.122:26003"})
 
 ## 查看分片情况：
 	db.runCommand({listshards:1})
